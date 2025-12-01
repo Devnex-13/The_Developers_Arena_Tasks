@@ -1,0 +1,11 @@
+BUSINESS INSIGHTS REPORT
+--------------------------------------------------------------------------------
+Total revenue in the period: $36,944.77 from 136 units sold.
+Top product by revenue is 'Gaming Laptop 17' with $9,594.00 in sales, while the top product by volume is 'USB-C Hub' with 25 units sold.
+Revenue grew from $5,510.97 in 2024-01 to $7,724.95 in 2024-05.
+The strongest region-category combination is North / Computers with $10,092.00 in revenue over the period.
+
+Suggested actions:
+1. Focus marketing and inventory on the top revenue and volume products to sustain demand.
+2. Replicate successful tactics from the best-performing region/category in underperforming regions.
+3. Monitor month-over-month revenue to identify emerging seasonality or growth trends.

@@ -1,0 +1,16 @@
+region,category,revenue
+North,Computers,10092.0
+East,Computers,5496.0
+West,Computers,5196.0
+South,Computers,4896.0
+West,Audio,1570.0
+South,Audio,1382.0
+South,Accessories,1278.94
+West,Accessories,1096.96
+East,Monitors,987.0
+North,Monitors,987.0
+South,Monitors,987.0
+East,Accessories,936.95
+North,Accessories,936.92
+North,Audio,586.0
+East,Audio,516.0
