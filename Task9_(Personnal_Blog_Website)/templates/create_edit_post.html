@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% if mode == "edit" %}Edit Post | My Premium Blog{% else %}New Post | My
+Premium Blog{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <header class="mb-4 d-flex justify-content-between align-items-center">
+      <div>
+        <p class="text-muted small mb-1">
+          {% if mode == "edit" %}Update your article{% else %}Create a new
+          article{% endif %}
+        </p>
+        <h1 class="h3 fw-semibold mb-0">
+          {% if mode == "edit" %}Edit Post{% else %}New Post{% endif %}
+        </h1>
+      </div>
+      <a
+        href="{{ url_for('admin_posts') }}"
+        class="btn btn-outline-secondary btn-sm"
+      >
+        Manage Posts
+      </a>
+    </header>
+
+    <form method="post" class="premium-form card shadow-sm border-0">
+      <div class="card-body p-4">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            placeholder="A compelling, descriptive title"
+            value="{{ post.title if post is defined else '' }}"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="content" class="form-label">Content</label>
+          <textarea
+            class="form-control"
+            id="content"
+            name="content"
+            rows="10"
+            placeholder="Write your story here. Use paragraphs to structure your thoughts."
+            required
+          >{{ post.content if post is defined else '' }}</textarea>
+        </div>
+
+        <div class="form-check form-switch mb-4">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="is_published"
+            name="is_published"
+            {% if post is not defined or post.is_published %}checked{% endif %}
+          />
+          <label class="form-check-label" for="is_published">
+            Publish this post
+          </label>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <a
+            href="{{ url_for('admin_posts') }}"
+            class="btn btn-outline-secondary"
+          >
+            Cancel
+          </a>
+          <button type="submit" class="btn btn-primary">
+            {% if mode == "edit" %}Save Changes{% else %}Publish Post{% endif %}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+

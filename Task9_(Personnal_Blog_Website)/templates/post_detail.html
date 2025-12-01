@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} | My Premium Blog{% endblock %}
+
+{% block content %}
+<article class="post-detail">
+  <header class="mb-4">
+    <a
+      href="{{ url_for('index') }}"
+      class="text-decoration-none text-muted small d-inline-flex align-items-center mb-2"
+    >
+      ← Back to all posts
+    </a>
+    <h1 class="fw-bold mb-2">{{ post.title }}</h1>
+    <p class="text-muted small mb-0">
+      Published on {{ post.created_at.strftime('%b %d, %Y') }}
+      {% if post.updated_at and post.updated_at.date() != post.created_at.date() %}
+      · Updated {{ post.updated_at.strftime('%b %d, %Y') }}
+      {% endif %}
+    </p>
+  </header>
+
+  <section class="post-content lead">
+    {# Simple safe formatting: preserve paragraphs #}
+    {% for paragraph in post.content.split('\n\n') %}
+    <p>{{ paragraph|replace('\n', ' ') }}</p>
+    {% endfor %}
+  </section>
+</article>
+{% endblock %}
+
+
