@@ -1,0 +1,107 @@
+/* Global styles */
+body {
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background: #f5f7fb;
+  color: #111827;
+}
+
+.premium-navbar {
+  background: radial-gradient(circle at top left, #4f46e5, #1d4ed8);
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  margin-right: 6px;
+  font-weight: 600;
+}
+
+.premium-footer {
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+.premium-footer .text-muted {
+  color: #9ca3af !important;
+}
+
+.hero-section {
+  margin-top: 1rem;
+}
+
+.gradient-text {
+  background: linear-gradient(120deg, #6366f1, #ec4899, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-card {
+  background: radial-gradient(circle at top left, #312e81, #1e293b);
+  color: #e5e7eb;
+  border-radius: 1.5rem;
+}
+
+.hero-card h5 {
+  color: #e5e7eb;
+}
+
+.check-badge {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+}
+
+.premium-card {
+  border-radius: 1rem;
+  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+.premium-form textarea {
+  resize: vertical;
+}
+
+.premium-alert {
+  border-radius: 999px;
+}
+
+.flash-container {
+  max-width: 640px;
+  margin: 0 auto 1rem auto;
+}
+
+.post-detail .post-content p {
+  margin-bottom: 1rem;
+}
+
+.text-gradient-soft {
+  background: linear-gradient(135deg, #a5b4fc, #f9a8d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 767.98px) {
+  .hero-section {
+    margin-top: 0.5rem;
+  }
+}
+
+
