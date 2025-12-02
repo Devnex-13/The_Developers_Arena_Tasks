@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% if mode == "edit" %}Edit Post | My Premium Blog{% else %}New Post | My Premium Blog{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-10">
+    <header class="mb-4 d-flex justify-content-between align-items-center">
+      <div>
+        <p class="text-muted small mb-1">
+          {% if mode == "edit" %}Update your article{% else %}Create a new article{% endif %}
+        </p>
+        <h1 class="h3 fw-semibold mb-0">
+          {% if mode == "edit" %}Edit Post{% else %}New Post{% endif %}
+        </h1>
+      </div>
+      <a href="{{ url_for('admin_posts') }}" class="btn btn-outline-secondary btn-sm">
+        Manage Posts
+      </a>
+    </header>
+
+    <form method="post" class="premium-form card shadow-sm border-0">
+      <div class="card-body p-4">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            placeholder="A compelling, descriptive title"
+            value="{{ post.title if post is defined else '' }}"
+            required
+          />
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="category_id" class="form-label">Category</label>
+            <select class="form-select" id="category_id" name="category_id">
+              <option value="">Select a category</option>
+              {% for category in categories %}
+              <option value="{{ category.id }}" {% if post is defined and post.category_id == category.id %}selected{% endif %}>
+                {{ category.name }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="tags" class="form-label">Tags</label>
+            <input
+              type="text"
+              class="form-control"
+              id="tags"
+              name="tags"
+              placeholder="tag1, tag2, tag3"
+              value="{{ current_tags if current_tags is defined else '' }}"
+            />
+            <small class="text-muted">Separate tags with commas</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="excerpt" class="form-label">Excerpt</label>
+          <textarea
+            class="form-control"
+            id="excerpt"
+            name="excerpt"
+            rows="2"
+            placeholder="Short summary for previews (optional)"
+          >{{ post.excerpt if post is defined else '' }}</textarea>
+          <small class="text-muted">Leave empty to auto-generate from content</small>
+        </div>
+
+        <div class="mb-3">
+          <label for="content" class="form-label">Content <span class="text-danger">*</span></label>
+          <textarea
+            class="form-control"
+            id="content"
+            name="content"
+            rows="15"
+            placeholder="Write your story here. Markdown is supported!"
+            required
+          >{{ post.content if post is defined else '' }}</textarea>
+          <small class="text-muted">
+            <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Markdown syntax guide</a>
+          </small>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-check form-switch mb-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="is_published"
+                name="is_published"
+                {% if post is not defined or post.is_published %}checked{% endif %}
+              />
+              <label class="form-check-label" for="is_published">
+                Publish this post
+              </label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-check form-switch mb-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="is_featured"
+                name="is_featured"
+                {% if post is defined and post.is_featured %}checked{% endif %}
+              />
+              <label class="form-check-label" for="is_featured">
+                Feature this post
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <a href="{{ url_for('admin_posts') }}" class="btn btn-outline-secondary">
+            Cancel
+          </a>
+          <button type="submit" class="btn btn-primary">
+            {% if mode == "edit" %}Save Changes{% else %}Publish Post{% endif %}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
