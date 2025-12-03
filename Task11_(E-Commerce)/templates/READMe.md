@@ -1,1 +1,0 @@
-adding all HTML templates
