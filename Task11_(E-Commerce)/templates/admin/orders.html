@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Orders - DP Ecommerce{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-4">
+    <h2 class="fw-bold mb-4"><i class="bi bi-receipt"></i> All Orders</h2>
+    
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td><strong>#{{ order.id[:8] }}</strong></td>
+                            <td>
+                                {% for u in users %}
+                                    {% if u.id == order.user_id %}
+                                        {{ u.full_name }}
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>{{ order.items|length }}</td>
+                            <td><strong>{{ (order.total * 83)|round(2) }} ₹</strong></td>
+                            <td>
+                                <span class="badge 
+                                    {% if order.status.value == 'delivered' %}bg-success
+                                    {% elif order.status.value == 'cancelled' %}bg-danger
+                                    {% elif order.status.value == 'shipped' %}bg-info
+                                    {% else %}bg-warning{% endif %}">
+                                    {{ order.status.value|title }}
+                                </span>
+                            </td>
+                            <td>{{ order.created_at.strftime('%Y-%m-%d') }}</td>
+                            <td>
+                                <a href="{{ url_for('order_detail', order_id=order.id) }}" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-eye"></i> View
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
